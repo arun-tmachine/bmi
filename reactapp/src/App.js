@@ -58,10 +58,24 @@ const App = () => {
     if (!mobile.trim()) {
       return 'Mobile number is required';
     }
-    if (!/^\d{10}$/.test(mobile)) {
-      return 'Mobile number should be a 10-digit number';
+    if (!/^[6-9]\d{9}$/.test(mobile)) {
+      return 'Mobile number should start with 6, 7, 8, or 9 and have 10 digits';
     }
     return '';
+  };
+  
+  const renderImage = () => {
+    if (category === 'Underweight') {
+      return <img src="https://img.freepik.com/free-vector/woman-hugging-herself-character_40876-2891.jpg?w=740&t=st=1689103128~exp=1689103728~hmac=a13d557b7240f4a49101008ee1455d0568881777ba25a3f6facaa94f392e0e36" alt="Underweight" />;
+    } else if (category === 'Normal') {
+      return <img src="https://img.freepik.com/free-vector/hand-drawn-health-illustration_23-2150074493.jpg?w=740&t=st=1689103262~exp=1689103862~hmac=9ae3f604387126e1eb15e4c5307278c37c37704ef36715bbe6a0c31fdd0eb3c5" alt="Normal" />;
+    } else if (category === 'Overweight') {
+      return <img src="https://img.freepik.com/free-vector/overweight-man-sitting-isolated_1308-133748.jpg?w=740&t=st=1689103212~exp=1689103812~hmac=ef9840ad6d768d24799051052396c2a9ad2831402c24d895c11d9a980512d1a1" alt="Overweight" />;
+    } else if (category === 'Obese') {
+      return <img src="https://img.freepik.com/free-vector/fat-lady-checking-weight_1308-22249.jpg?w=360&t=st=1689103175~exp=1689103775~hmac=1cb222ca9dda603239a21f60399e17daae9d33308c08af26ca3d68d1eb841ff5" alt="Obese" />;
+    } else {
+      return null;
+    }
   };
 
   const calculateBMI = () => {
@@ -160,6 +174,7 @@ const App = () => {
           <h2>Your BMI: {bmi}</h2>
           <h3>Category: {category}</h3>
           {addData()}
+          {renderImage()}
         </div>
       )}
     </div>
